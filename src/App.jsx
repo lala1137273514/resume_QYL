@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, Download } from 'lucide-react';
+import { Phone, Mail, Download, ChevronDown } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import Navigation from './components/Navigation';
 import Profile from './components/pages/Profile';
@@ -39,35 +39,45 @@ const App = () => {
     };
 
     return (
-        <div className="h-screen overflow-hidden bg-slate-50 font-sans p-4 md:p-6 xl:p-8 text-slate-800 selection:bg-blue-200 selection:text-blue-900 relative">
+        <div className="min-h-screen lg:h-screen lg:overflow-hidden overflow-x-hidden bg-slate-50 font-sans p-4 md:p-6 xl:p-8 text-slate-800 selection:bg-blue-200 selection:text-blue-900 relative">
             {/* 动态光晕背景 (Glassmorphism Blobs) */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-indigo-300/40 rounded-full mix-blend-multiply filter blur-[120px] opacity-60 animate-blob"></div>
                 <div className="absolute top-[10%] right-[-10%] w-[40rem] h-[40rem] bg-sky-300/40 rounded-full mix-blend-multiply filter blur-[120px] opacity-60 animate-blob animation-delay-2000"></div>
                 <div className="absolute bottom-[-20%] left-[20%] w-[50rem] h-[50rem] bg-blue-300/40 rounded-full mix-blend-multiply filter blur-[120px] opacity-60 animate-blob animation-delay-4000"></div>
             </div>
 
-            <div className="h-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 xl:gap-8 pb-16 lg:pb-0 relative z-10">
+            <div className="lg:h-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 xl:gap-8 pb-16 lg:pb-0 relative z-10">
 
                 {/* ================= 左侧：个人信息栏 ================= */}
-                <div className="h-full w-full lg:w-1/3 xl:w-[28%] flex-shrink-0">
+                <div className="w-full lg:w-1/3 xl:w-[28%] lg:h-full flex-shrink-0">
                     <Sidebar />
                 </div>
 
                 {/* ================= 右侧：内容区与导航 ================= */}
-                <main className="h-full flex-1 flex flex-col min-w-0 relative">
+                <main className="flex-1 flex flex-col min-w-0 relative lg:h-full">
 
-                    {/* 顶部导航 Tabs */}
-                    <div className="flex-shrink-0 mb-4 z-30">
+                    {/* 顶部导航 Tabs (移动端Sticky悬浮) */}
+                    <div id="resume-nav-bar" className="flex-shrink-0 mb-4 z-50 sticky top-4 lg:static lg:top-auto">
                         <Navigation activeTab={activeTab} setActiveTab={setActiveTab} isScrolled={isScrolled} />
                     </div>
 
                     {/* 核心内容展示区 - 可滚动 */}
-                    <div className="flex-1 overflow-y-auto hide-scrollbar bg-white/70 backdrop-blur-2xl rounded-[2rem] p-6 md:p-8 xl:p-10 shadow-sm border border-white/60 ring-1 ring-slate-900/5">
+                    <div className="flex-1 lg:overflow-y-auto hide-scrollbar bg-white/70 backdrop-blur-2xl rounded-[2rem] p-6 md:p-8 xl:p-10 shadow-sm border border-white/60 ring-1 ring-slate-900/5">
                         {renderContent()}
                     </div>
 
                 </main>
+            </div>
+
+            {/* 移动端专属下滑引导浮窗 - 仅在未滚动时显示，滚动后渐变消失 */}
+            <div className={`
+                fixed bottom-24 left-1/2 -translate-x-1/2 z-40 lg:hidden transition-all duration-700 pointer-events-none
+                ${isScrolled ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0 text-blue-500'}
+            `}>
+                <div className="flex flex-col items-center justify-center bg-white/90 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-100 px-3 py-2 rounded-full animate-bounce">
+                    <ChevronDown className="w-5 h-5 text-blue-600" />
+                </div>
             </div>
 
             {/* ================= 移动端悬浮 CTA ================= */}

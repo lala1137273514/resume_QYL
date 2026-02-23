@@ -4,8 +4,8 @@ import { profile } from '../data/profile';
 
 const Sidebar = () => {
     return (
-        <aside className="h-full relative z-10">
-            <div className="h-full overflow-y-auto hide-scrollbar bg-white/70 backdrop-blur-2xl rounded-[2rem] p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow border border-white/60 ring-1 ring-slate-900/5">
+        <aside className="lg:h-full relative z-10">
+            <div className="lg:h-full lg:overflow-y-auto hide-scrollbar bg-white/70 backdrop-blur-2xl rounded-[2rem] p-6 lg:p-8 shadow-sm hover:shadow-md transition-shadow border border-white/60 ring-1 ring-slate-900/5">
                 {/* 照片与姓名 */}
                 <div className="flex flex-col items-center mb-6 text-center">
                     <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-50 mb-5 overflow-hidden border-4 border-white shadow-lg flex items-center justify-center relative group">
