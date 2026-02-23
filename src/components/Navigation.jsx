@@ -1,16 +1,17 @@
 import React from 'react';
-import { User, Layers, Monitor, Brain } from 'lucide-react';
+import { User, Layers, Monitor, Brain, Briefcase, Wrench } from 'lucide-react';
 
 const Navigation = ({ activeTab, setActiveTab, isScrolled }) => {
     const navItems = [
         { id: 'profile', label: '首页简介', icon: User },
-        { id: 'projects', label: '项目实战', icon: Layers },
+        { id: 'skills', label: '个人技能', icon: Wrench },
+        { id: 'experience', label: '工作经历', icon: Briefcase },
+        { id: 'projects', label: '项目经历', icon: Layers },
         { id: 'portfolio', label: '个人作品', icon: Monitor },
-        { id: 'methodology', label: '工作方法论', icon: Brain },
     ];
 
     return (
-        <div className={`sticky top-4 z-30 transition-all duration-300 ${isScrolled ? 'px-0' : 'px-0'}`}>
+        <div className="transition-all duration-300">
             <nav className={`
         flex overflow-x-auto hide-scrollbar p-1.5 rounded-2xl transition-all duration-300
         ${isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-lg shadow-slate-200/50 border border-white/50' : 'bg-white/80 backdrop-blur-md shadow-sm border border-slate-100'}

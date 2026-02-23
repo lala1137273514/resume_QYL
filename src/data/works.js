@@ -1,29 +1,51 @@
 export const worksData = [
   {
-    id: 1,
-    title: '开源 AI Agent 助手',
-    category: '开源代码',
-    shortDesc: '基于 Dify 和 Claude API 搭建的个人知识库助手，包含完整的系统提示词与 Function Call 配置。',
-    details: '本项目旨在探索 LLM 在个人知识管理中的应用。通过接入本地 Obsidian 笔记并进行向量化处理，实现了高准确率的知识问答。包含完整的代码实现与部署文档。',
-    githubLink: 'https://github.com/qinyulong', // 占位
+    id: 4,
+    title: '练吧 · AI 话术演练平台',
+    category: '高保真原型',
+    shortDesc: '包含完整的管理端（Admin）与小程序端（Mini Program）的可交互高保真原型演示。',
+    details: '基于深入竞品调研沉淀的设计资产，模拟真实的话术演练及管理流程。可直接体验角色的交互逻辑与核心业务流转，展示了从需求到高保真原型的完整产出能力。',
+    githubLink: '',
+    customLinks: [
+      { label: 'Admin 原型', url: '/demos/admin_demo.html' },
+      { label: '小程序原型', url: '/demos/lianba_miniprogram.html' }
+    ],
     screenshots: []
   },
   {
-    id: 2,
-    title: 'AI 销售助手 · 核心 PRD',
-    category: '产品文档',
-    shortDesc: '包含完整的需求背景、业务流程图、状态机设计以及 VLM 视觉大模型接口调用时序图。',
-    details: '这是一份脱敏处理后的商业级 PRD。重点展示了如何将模糊的业务需求拆解为可执行的工程任务，以及在多模型并发场景下的错误重试机制与降级策略设计，体现了扎实的业务拆解与工程化思维。',
-    githubLink: '',
+    id: 5,
+    title: 'CEO 大模型销售 Agent',
+    category: '开源代码 / Demo',
+    shortDesc: '基于大模型的企业级对话 Agent 演示工程，集成了私有化知识库检索与动态 Function Call 通话能力。',
+    details: '本项目展示了如何利用大模型打造高可用的 ToB 对话销售 Agent。代码结构涵盖了多模态意图识别、RAG（检索增强生成）精准问答、以及基于 Function Call 触发的自动化业务流程。展现了从底层逻辑设计到 AI 接口集成的全链路工程实践能力。',
+    githubLink: 'https://github.com/lala1137273514/CEO_Demo',
+    customLinks: [
+      { label: '在线体验', url: 'https://ceo-demo.zeabur.app/dashboard' }
+    ],
     screenshots: []
   },
   {
-    id: 3,
-    title: '大模型评测 SOP 与脚本',
-    category: '方法论沉淀',
-    shortDesc: '针对 ToB 场景沉淀的 10 维度评测框架，及配合自动化触发评测的 Python 脚本。',
-    details: '总结了在千锤 Agent 平台建设中的实战经验。包含测试集（Dataset）构建方法、Ground Truth 对齐策略，以及使用 LLM-as-a-Judge 的自动化打分评测代码，确保模型迭代的客观性。',
-    githubLink: '',
+    id: 6,
+    title: '千锤大模型评测平台 (SimpleFuse)',
+    category: '全栈开发 / 独立部署',
+    shortDesc: '从千锤平台独立拆分的大模型自动化评测工具，支持多维度打分与效果对比。',
+    details: '本项目是“千锤 Agent 平台”评测模块的独立演进版。不仅包含大模型客观效果测评（LLM-as-a-Judge）的核心逻辑代码，还实现了前端可视化面板，并完成了全栈线上部署，提供开箱即用的自动化模型打分体验。',
+    githubLink: 'https://github.com/lala1137273514/simplefuse',
+    customLinks: [
+      { label: '在线体验', url: 'https://simplefuse.zeabur.app/dashboard' }
+    ],
+    screenshots: []
+  },
+  {
+    id: 7,
+    title: '千锤提示词管理平台 (Yprompt)',
+    category: '全栈开发 / 独立部署',
+    shortDesc: '千锤平台中 Prompt 优化与版本管理模块的独立部署版，支持提示词的高效迭代。',
+    details: '此项目将千锤 Agent 平台中核心的“提示词管理与调优”功能剥离并进行了完整的前后端独立重构与部署。系统实现了从 Prompt 的多版本对照管理、结构化录入到在线测试的闭环工作流，帮助 AI 应用开发者沉淀高质量的 Prompt 资产。',
+    githubLink: 'https://github.com/lala1137273514/Yprompt',
+    customLinks: [
+      { label: '在线体验', url: 'https://xn--yprompttest-4g3fa.zeabur.app/login' }
+    ],
     screenshots: []
   }
 ];

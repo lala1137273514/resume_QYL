@@ -1,25 +1,38 @@
-import React from 'react';
-import { X, User, Database, LineChart, Layers, Check } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { X, User, Database, LineChart, Layers, Check, Brain } from 'lucide-react';
 
 const ProjectModal = ({ project, onClose }) => {
+    // Add effect to prevent body scroll when modal is open
+    useEffect(() => {
+        if (project) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [project]);
+
     if (!project) return null;
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-slide-up">
+    return createPortal(
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
             <div
-                className="absolute inset-0 bg-slate-900/30 backdrop-blur-md transition-opacity"
+                className="absolute inset-0 bg-slate-900/50"
                 onClick={onClose}
             ></div>
 
-            <div className="bg-white/95 backdrop-blur-xl rounded-[2rem] w-full max-w-3xl max-h-[90vh] overflow-y-auto relative shadow-2xl z-10 border border-white">
+            <div className="bg-white rounded-[2rem] w-full max-w-3xl max-h-[90vh] relative shadow-2xl z-10 border border-slate-100 flex flex-col overflow-hidden animate-slide-up">
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 p-2 bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-red-500 rounded-full transition-colors z-20"
+                    className="absolute top-6 right-6 p-2 bg-slate-100/80 hover:bg-red-50 hover:text-red-500 text-slate-500 rounded-full transition-colors z-20"
                 >
                     <X className="w-5 h-5" />
                 </button>
 
-                <div className="p-8 md:p-12">
+                <div className="overflow-y-auto p-8 md:p-12 w-full hide-scrollbar">
                     <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-5 pr-10 leading-tight">
                         {project.title}
                     </h2>
@@ -28,6 +41,9 @@ const ProjectModal = ({ project, onClose }) => {
                         <span className="bg-blue-50 text-blue-700 px-4 py-1.5 rounded-lg text-sm font-bold flex items-center border border-blue-100">
                             <User className="w-4 h-4 mr-2" />
                             角色：{project.role}
+                        </span>
+                        <span className="text-slate-500 text-sm font-medium ml-2">
+                            {project.period}
                         </span>
                     </div>
 
@@ -110,7 +126,8 @@ const ProjectModal = ({ project, onClose }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 

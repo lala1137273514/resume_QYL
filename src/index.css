@@ -1,13 +1,83 @@
 @import "tailwindcss";
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-slide-up {
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 25s linear infinite reverse;
+}
+
+.mask-edges {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  25% {
+    transform: translate(40vw, 20vh) scale(1.1);
+  }
+
+  50% {
+    transform: translate(-20vw, 40vh) scale(0.9);
+  }
+
+  75% {
+    transform: translate(-40vw, -20vh) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 25s infinite alternate linear;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
